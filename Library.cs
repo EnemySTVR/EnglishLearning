@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,8 +36,20 @@ namespace EnglishLearning
 
             using (var file = new FileStream("Library.bin", FileMode.OpenOrCreate))
             {
-                var words = binFormatter.Deserialize(file) as List<Word>;
+                List<Word> words = null;
 
+                try
+                {
+                    words = binFormatter.Deserialize(file) as List<Word>;
+                }
+                catch (SerializationException)
+                {
+                    var key = new Word("English", "Русский");
+                    lib.Add(key);
+                }
+                
+
+                
                 if (words != null)
                 {
                     lib = words as List<Word>;

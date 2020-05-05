@@ -23,14 +23,14 @@ namespace EnglishLearning
                 {
                     case 1:
                         {
-                            lib = appInterface.NewWordMenu(lib);
+                            appInterface.NewWordMenu(lib);
                             lib.Save();
                             break;
                         }
                     case 2: { appInterface.ConsolidationMenu(lib); break; }
                     case 3:
                         {
-                            lib = appInterface.LibraryMenu(lib);
+                            appInterface.LibraryMenu(lib);
                             lib.Save();
                             break;
                         }
