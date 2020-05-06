@@ -47,15 +47,8 @@ namespace EnglishLearning
                     var key = new Word("English", "Русский");
                     lib.Add(key);
                 }
-                
 
-                
-                if (words != null)
-                {
-                    lib = words as List<Word>;
-                }
-                return;
-
+                lib = words as List<Word>;
             }
         }
         public void Save()
@@ -77,16 +70,18 @@ namespace EnglishLearning
             lib.Remove(word);
         }
         public int Count()
-        { return lib.Count - 1; }
+        {
+            return lib.Count - 1;
+        }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
             return lib.GetEnumerator();
         }
 
-        public IEnumerator<Word> GetEnumerator()
-        {
-            return lib.GetEnumerator();
-        }
+        //public IEnumerator<Word> GetEnumerator()
+        //{
+        //    return lib.GetEnumerator();
+        //}
     }
 }

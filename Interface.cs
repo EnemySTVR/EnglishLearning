@@ -53,7 +53,7 @@ namespace EnglishLearning
             }
         }
 
-        public Library NewWordMenu(Library lib)
+        public void NewWordMenu(Library lib)
         {
             var words = new List<Word>();
             var inputTest = true;
@@ -64,10 +64,10 @@ namespace EnglishLearning
                 Console.WriteLine("1. Отмена");
                 Console.WriteLine("Введи слово на английском:");
                 var inputName = Console.ReadLine();
-                if (inputName.Equals("1")) return lib;
+                if (inputName.Equals("1")) return;
                 Console.WriteLine("Введи его перевод:");
                 var inputValue = Console.ReadLine();
-                if (inputValue.Equals("1")) return lib;
+                if (inputValue.Equals("1")) return;
 
                 var word = new Word(WordFormatter.ToStandart(inputName), WordFormatter.ToStandart(inputValue));
                 lib.Add(word);
@@ -81,7 +81,7 @@ namespace EnglishLearning
 
                     var input = Console.ReadLine();
                     inputTest = true;
-                    if (input.Equals("1")) return lib;
+                    if (input.Equals("1")) return;
                     if (input.Equals("2")) inputTest = false;
                 }
                 while (inputTest == true);
@@ -128,9 +128,8 @@ namespace EnglishLearning
             Console.WriteLine("Нажми любую клавишу, для возврата в главное меню.");
             Console.ReadKey();
         }
-        public Library LibraryMenu(Library lib)
+        public void LibraryMenu(Library lib)
         {
-            var inputTest = true;
             do
             {
                 Console.Clear();
@@ -153,17 +152,16 @@ namespace EnglishLearning
                 var input = Console.ReadLine();
                 switch (input)
                 {
-                    case "1": { return lib; }
+                    case "1": { return; }
 
 
-                    case "2": { lib = DeleteMenu(lib); break; }
+                    case "2": { DeleteMenu(lib); break; }
                     default: { break; }
                 }
             }
-            while (inputTest == true);
-            return lib;
+            while (true);
         }
-        public Library DeleteMenu(Library lib)
+        public void DeleteMenu(Library lib)
         {
             var inputTest = false;
             var buffer = 0;
@@ -177,7 +175,7 @@ namespace EnglishLearning
                     Console.WriteLine("Введи номер слова:");
                     var inputIndex = Console.ReadLine();
 
-                    if (inputIndex.Equals("0")) return lib;
+                    if (inputIndex.Equals("0")) return;
                     else if (Int32.TryParse(inputIndex, out buffer))
                     {
                         lib.Remove(lib[buffer]);
@@ -191,7 +189,7 @@ namespace EnglishLearning
                 Console.WriteLine("Слово удалено!");
                 Console.WriteLine("Нажмите любую клавишу для возврата.");
                 Console.ReadKey();
-                return lib;
+                return;
             }
 
         }
