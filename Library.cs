@@ -73,15 +73,9 @@ namespace EnglishLearning
         {
             return lib.Count - 1;
         }
-
         IEnumerator IEnumerable.GetEnumerator()
         {
             return lib.GetEnumerator();
         }
-
-        //public IEnumerator<Word> GetEnumerator()
-        //{
-        //    return lib.GetEnumerator();
-        //}
     }
 }
