@@ -184,7 +184,6 @@ namespace EnglishLearning
                 }
                 while (inputTest == false);
 
-
                 Console.Clear();
                 Console.WriteLine("Слово удалено!");
                 Console.WriteLine("Нажмите любую клавишу для возврата.");
