@@ -91,6 +91,12 @@ namespace EnglishLearning
         public void ConsolidationMenu(Library lib)
         {
             var counts = 0;
+            var rnd = new Random();
+            var buffer = new List<Word>();
+            foreach (Word w in lib)
+            {
+                buffer.Add(w);
+            }
 
             Console.Clear();
             Console.WriteLine("Программа будет показывать тебе английские слова.");
@@ -98,18 +104,22 @@ namespace EnglishLearning
             Console.WriteLine("Нажми любую клавишу, чтобы начать:");
             Console.ReadKey();
 
+            
+
+            
             for (int i = 1; i <= lib.Count(); i++)
             {
+                var rndIndex = rnd.Next(1, buffer.Count());
                 Console.Clear();
-                Console.WriteLine($"Переведи слово: {lib[i].Name}.");
+                Console.WriteLine($"Переведи слово: {buffer[rndIndex].Name}.");
                 var value = Console.ReadLine();
                 value = WordFormatter.ToStandart(value);
-                if (value.Equals(lib[i].Value))
+                if (value.Equals(buffer[rndIndex].Value))
                 {
                     counts++;
                     Console.Clear();
                     Console.WriteLine("Правильно!");
-                    Console.WriteLine(lib[i]);
+                    Console.WriteLine(buffer[rndIndex]);
                     Console.WriteLine();
                     Console.WriteLine("Нажми любую клавишу, для продолжения");
                     Console.ReadKey();
@@ -118,9 +128,12 @@ namespace EnglishLearning
                 {
                     Console.Clear();
                     Console.WriteLine("Не правильно!");
+                    Console.WriteLine(buffer[rndIndex]);
+                    Console.WriteLine();
                     Console.WriteLine("Нажми любую клавишу, для продолжения");
                     Console.ReadKey();
                 }
+                buffer.Remove(buffer[rndIndex]);
             }
 
             Console.Clear();
