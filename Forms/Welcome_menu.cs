@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EnglishLearning
+namespace EnglishLearning.Forms
 {
-    public partial class MainMenu : Form
+    public partial class Welcome_menu : Form
     {
-        public MainMenu()
+        public Welcome_menu()
         {
             InitializeComponent();
+        }
+
+        private void TheBackground_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
